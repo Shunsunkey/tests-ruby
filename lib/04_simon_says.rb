@@ -18,7 +18,18 @@ def echo(word)
     phrase.split.first
   end
   
-  def titleize(string)
-    nocaps = "and, over, the"
-    string.split.map(&:capitalize).join(' ')
+  def titleize input
+    array = input.split(" ")
+    count = 0
+    array.each do |word|
+        if count == 0
+            word.capitalize!
+            count = 1
+        elsif word == "and" || word == "the"
+            word.downcase!
+        else
+            word.capitalize!
+        end
+    end
+    array.join(" ")
   end 
